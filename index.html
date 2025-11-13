@@ -9,8 +9,10 @@
   <link rel="preconnect" href="https://cdn.auth0.com"/>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.8/auth0-spa-js.production.js"></script>
+  <meta name="description" content="Auth0 Login Starter - simple vanilla JS SPA with Auth0 Universal Login">
   <script>
     // Config for production (Vercel environment variables will replace __VARIABLES__)
+    // kept for backward compatibility; runtime endpoint /api/config is preferred
     window.AUTH_CONFIG = {
       domain: "__AUTH0_DOMAIN__",
       clientId: "__AUTH0_CLIENT_ID__"
@@ -18,18 +20,25 @@
   </script>
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+  <noscript>
+    <div style="background:#ffe9e9;color:#7a1a1a;padding:12px;text-align:center;">
+      This app requires JavaScript. Please enable JavaScript in your browser.
+    </div>
+  </noscript>
   <div class="wrap">
-    <div class="card">
+    <main id="main">
+    <div class="card" role="region" aria-label="Auth0 login card">
       <h1>Auth0 Login Starter</h1>
       <p>Welcome! Sign in with Auth0 to access your profile. Configure your credentials in <code>auth_config.json</code>.</p>
       <div class="row">
-        <button id="btn-login" class="primary">Log in</button>
-        <button id="btn-logout" class="ghost">Log out</button>
+        <button id="btn-login" class="primary" aria-label="Log in">Log in</button>
+        <button id="btn-logout" class="ghost" aria-label="Log out">Log out</button>
       </div>
       <div id="user" class="user">
         <div class="profile-card">
           <div class="profile-header">
-            <img id="avatar" class="avatar" src="" alt="Avatar">
+            <img id="avatar" class="avatar" src="" alt="User avatar">
             <div class="profile-info">
               <h3 id="name"></h3>
               <p id="email"></p>
@@ -56,6 +65,7 @@
         </div>
       </div>
     </div>
+    </main>
   </div>
 
   <script type="module" src="script.js"></script>

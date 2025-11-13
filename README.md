@@ -63,19 +63,20 @@ The app will be available at `http://localhost:3000`.
 4. Click "Log out" to end the session
 
 ## Project Structure
-
 ```
 auth0-login-starter/
-├── index.html          # Main HTML with favicon
-├── styles.css          # Modern CSS with accessibility
-├── script.js           # Robust JS with error handling
-├── auth_config.json    # User config (ignored by git)
-├── auth_config.example.json  # Template config
-├── package.json        # Enhanced metadata
-├── README.md           # Comprehensive docs
-├── LICENSE             # MIT license
-├── favicon.svg         # Custom favicon
-└── .gitignore          # Clean exclusions
+├── index.html                  # Main HTML with favicon
+├── styles.css                  # CSS styles (accessibility + responsive)
+├── script.js                   # JavaScript logic (Auth0 integration + UI)
+├── api/
+│   └── config.js               # Vercel serverless endpoint that exposes runtime config
+├── auth_config.json            # Local config (ignored by git) — copy from example
+├── auth_config.example.json    # Template config to copy for local development
+├── package.json                # Project metadata & scripts
+├── README.md                   # This file
+├── LICENSE                     # MIT license
+├── favicon.svg                 # SVG favicon
+└── .gitignore                  # Files to ignore in git
 ```
 
 ## Configuration Details
@@ -84,6 +85,43 @@ Ensure your Auth0 application is configured with:
 - **Allowed Callback URLs**: `http://localhost:3000`
 - **Allowed Logout URLs**: `http://localhost:3000`
 - **Allowed Web Origins**: `http://localhost:3000`
+
+## Deployment
+
+I deployed my app  so that I won't always need to run it on localhost. You can access it [here](https://auth0-login-ashy.vercel.app/). You can also do the same. Below is the example of hosting it using `Vercel`
+
+### Vercel
+1. Push your code to GitHub
+2. Go to [Vercel](https://vercel.com) and sign in
+3. Click "New Project" and import your GitHub repository
+4. In project settings, add environment variables:
+   - `AUTH0_DOMAIN`: Your Auth0 domain (e.g., `your-app.auth0.com`)
+   - `AUTH0_CLIENT_ID`: Your Auth0 client ID
+5. Redeploy the project (go to deployments and redeploy)
+6. Update your Auth0 application settings with the Vercel domain:
+   - **Allowed Callback URLs**: `https://your-vercel-domain.vercel.app`
+   - **Allowed Logout URLs**: `https://your-vercel-domain.vercel.app`
+   - **Allowed Web Origins**: `https://your-vercel-domain.vercel.app`
+
+### Verifying the runtime config (quick checks)
+
+- After deployment, open this URL in your browser:
+
+  `https://your-vercel-domain.vercel.app/api/config`
+
+  You should see JSON like:
+
+  ```json
+  { "ok": true, "domain": "princenzmw.us.auth0.com", "clientId": "UG4q..." }
+  ```
+
+- If `ok` is false or `domain`/`clientId` are empty strings:
+  - Confirm the environment variable names are EXACT (`AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`) and set for the correct environment (Production/Preview).
+  - Redeploy the site (Vercel automatically re-deploys when env vars change, but you can manually redeploy).
+
+- If `/api/config` returns the correct values but login still fails:
+  - Check your Auth0 Application settings and ensure the Vercel domain is listed in **Allowed Callback URLs**, **Allowed Logout URLs**, and **Allowed Web Origins**.
+  - Inspect the browser console and network tab for requests to `/api/config` and the Auth0 authorize URL.
 
 ## Technologies Used
 

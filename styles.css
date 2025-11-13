@@ -145,3 +145,24 @@ button:focus {
     width: 100%;
   }
 }
+
+/* Skip link */
+.skip {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip:focus {
+  left: 10px;
+  top: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+  z-index: 9999;
+}
