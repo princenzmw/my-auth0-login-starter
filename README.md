@@ -23,8 +23,8 @@ A polished, framework-free sample that implements **Auth0 Universal Login** usin
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/auth0-login-starter.git
-   cd auth0-login-starter
+   git clone https://github.com/princenzmw/my-auth0-login-starter.git
+   cd my-auth0-login-starter
    ```
 
 2. **Install dependencies:**
