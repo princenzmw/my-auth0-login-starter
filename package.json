@@ -1,0 +1,23 @@
+{
+  "name": "auth0-login-starter",
+  "version": "1.0.0",
+  "description": "A polished Vanilla JS starter for Auth0 authentication with modern UI",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 3000 -c-1 .",
+    "dev": "npm start"
+  },
+  "keywords": ["auth0", "authentication", "vanilla-js", "spa", "login"],
+  "author": "Your Name",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/auth0-login-starter.git"
+  }
+}

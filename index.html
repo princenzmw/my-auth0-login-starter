@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auth0 Login Starter</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://cdn.auth0.com"/>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.8/auth0-spa-js.production.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Auth0 Login Starter</h1>
+      <p>Welcome! Sign in with Auth0 to access your profile. Configure your credentials in <code>auth_config.json</code>.</p>
+      <div class="row">
+        <button id="btn-login" class="primary">Log in</button>
+        <button id="btn-logout" class="ghost">Log out</button>
+      </div>
+      <div id="user" class="user">
+        <div class="profile-card">
+          <div class="profile-header">
+            <img id="avatar" class="avatar" src="" alt="Avatar">
+            <div class="profile-info">
+              <h3 id="name"></h3>
+              <p id="email"></p>
+            </div>
+          </div>
+          <div class="profile-details">
+            <div class="detail">
+              <span class="label">Nickname:</span>
+              <span class="value" id="nickname"></span>
+            </div>
+            <div class="detail">
+              <span class="label">Verified Email:</span>
+              <span class="value" id="email-verified"></span>
+            </div>
+            <div class="detail">
+              <span class="label">Last Updated:</span>
+              <span class="value" id="updated-at"></span>
+            </div>
+            <div class="detail">
+              <span class="label">User ID:</span>
+              <span class="value" id="sub"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
