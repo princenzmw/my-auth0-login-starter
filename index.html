@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://cdn.auth0.com"/>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.auth0.com/js/auth0-spa-js/2.8/auth0-spa-js.production.js"></script>
+  <script>
+    // Config for production (Vercel environment variables will replace __VARIABLES__)
+    window.AUTH_CONFIG = {
+      domain: "__AUTH0_DOMAIN__",
+      clientId: "__AUTH0_CLIENT_ID__"
+    };
+  </script>
 </head>
 <body>
   <div class="wrap">

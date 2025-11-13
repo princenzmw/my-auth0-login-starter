@@ -1,12 +1,19 @@
 try {
-  const res = await fetch('/auth_config.json');
-  if (!res.ok) {
-    throw new Error('Failed to load auth_config.json. Please ensure the file exists and is properly configured.');
+  let config;
+  if (window.AUTH_CONFIG && window.AUTH_CONFIG.domain && window.AUTH_CONFIG.clientId) {
+    // Production config from environment variables
+    config = window.AUTH_CONFIG;
+  } else {
+    // Local development: fetch from auth_config.json
+    const res = await fetch('/auth_config.json');
+    if (!res.ok) {
+      throw new Error('Failed to load auth_config.json. Please ensure the file exists and is properly configured.');
+    }
+    config = await res.json();
   }
-  const config = await res.json();
 
   if (!config.domain || !config.clientId) {
-    throw new Error('Invalid configuration: domain and clientId are required in auth_config.json');
+    throw new Error('Invalid configuration: domain and clientId are required');
   }
 
   const auth0Client = await auth0.createAuth0Client({
